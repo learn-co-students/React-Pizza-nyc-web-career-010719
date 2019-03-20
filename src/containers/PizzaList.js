@@ -3,6 +3,9 @@ import Pizza from '../components/Pizza'
 class PizzaList extends Component {
 
   render() {
+
+    // console.log(this.props.topping);
+
     return (
       <table className="table table-striped">
         <thead>
@@ -15,7 +18,9 @@ class PizzaList extends Component {
         </thead>
         <tbody>
           {
-            //render Pizza here
+            this.props.pizzas.map( pizza => {
+              return <Pizza key={pizza.id} pizza={pizza} selectPizza={this.props.selectPizza}/>
+            })
           }
         </tbody>
       </table>
