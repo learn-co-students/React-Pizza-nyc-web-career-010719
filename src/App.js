@@ -27,7 +27,6 @@ class App extends Component {
         ...this.state.pizzaToEdit,
       topping: e.target.value
     }})
-    console.log(this.state.pizzaToEdit)
 
   }
 
@@ -38,7 +37,6 @@ class App extends Component {
         ...this.state.pizzaToEdit,
       size: e.target.value
     }})
-    console.log(this.state.pizzaToEdit)
   }
 
   changeVeg = (e) => {
@@ -49,7 +47,6 @@ class App extends Component {
         ...this.state.pizzaToEdit,
       vegetarian: value
     }})
-    console.log(this.state.pizzaToEdit)
   }
 
   handleSubmit = (e) => {
