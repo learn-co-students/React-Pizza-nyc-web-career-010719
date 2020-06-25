@@ -1,16 +1,20 @@
-import React from "react"
+import React, { Component } from "react"
 
-const PizzaForm = () => {
-  return(
+class PizzaForm extends Component {
+  render() {
+    console.log("props in form", this.props);
+    // console.log("topping", this.props.pizza.topping);
+    // console.log("topping", this.props.topping);
+
+    return(
       <div className="form-row">
         <div className="col-5">
-            <input type="text" className="form-control" placeholder="Pizza Topping" value={
-                //Pizza Topping Should Go Here
-                null
+            <input onChange={this.props.edit} name="topping" type="text" className="form-control" placeholder="Pizza Topping" value={
+                this.props.topping
               }/>
         </div>
         <div className="col">
-          <select value={null} className="form-control">
+          <select onChange={this.props.edit} name="size" value={this.props.size} className="form-control">
             <option value="Small">Small</option>
             <option value="Medium">Medium</option>
             <option value="Large">Large</option>
@@ -18,24 +22,25 @@ const PizzaForm = () => {
         </div>
         <div className="col">
           <div className="form-check">
-            <input className="form-check-input" type="radio" value="Vegetarian" checked={null}/>
+            <input onClick={this.props.vegetarianEdit} className="form-check-input" type="radio" value="Vegetarian" checked={this.props.vegetarian}/>
             <label className="form-check-label">
               Vegetarian
             </label>
           </div>
           <div className="form-check">
-            <input className="form-check-input" type="radio" value="Not Vegetarian" checked={null}/>
+            <input onClick={this.props.vegetarianEdit} className="form-check-input" type="radio" value="Not Vegetarian" checked={ this.props.topping ? !this.props.vegetarian : null }/>
             <label className="form-check-label">
               Not Vegetarian
             </label>
           </div>
         </div>
         <div className="col">
-          <button type="submit" className="btn btn-success" onClick={console.log}>Submit</button>
+          <button type="submit" className="btn btn-success" onClick={ () => this.props.editPizza(this.props.id)}>Submit</button>
         </div>
       </div>
 
-  )
+    )
+  }
 }
 
 export default PizzaForm
